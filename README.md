@@ -2,8 +2,7 @@
 <span>Just copy/replace to your yasb config folder <img src="https://i.postimg.cc/nr2Tg3hQ/silly-youtube-emotes-but-with-better-quality-v0-8w6g70oi39ha1.webp" width="24"></span>
 <br>
 - **Optional:** Auto hide taskbar.
-- **Cautions:** Open config.yaml and edit the file path according to your own. Example: from "C:\Users\Administrator\Pictures\Best" to "C:\\Users\\Administrator\\Pictures\\Best".
-- **Bug(?):** Blur only works on Windows 10, on Windows 11 it looks like the preview below.
+- **Cautions:** Open config.yaml and edit the file path according to your own. Example: from "C:\Users\Administrator\Pictures\Best" to "C:\\\Users\\\Administrator\\\Pictures\\\Best".
 <br>
 <p align="center"><samp>Preview</samp></p>
 <p align="center">

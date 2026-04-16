@@ -1,21 +1,17 @@
 watch_stylesheet: true
 watch_config: true
 debug: false
-komorebi:
-  start_command: "komorebic start"
-  stop_command: "komorebic stop"
-  reload_command: "komorebic stop && komorebic start"
 bars:
   status-bar:
     enabled: true
-    screens: ['*']
+    screens: ['primary']
     class_name: "yasb-bar"
     alignment:
       position: "top"
       center: false
     animation:
       enabled: true
-      duration: 150
+      duration: 400
     blur_effect:
       enabled: false
       acrylic: false
@@ -37,9 +33,8 @@ bars:
       left:
         [
           "home",
-          "wallpaper",
-          "weather",
-          "active_window"
+          "quick_launch",
+          "apps"
         ]
       center:
         [
@@ -47,21 +42,62 @@ bars:
         ]
       right:
         [
+          "systray",
           "cpu",
           "memory",
-          "battery",
-          "volume",
-          "wifi",
+          "open_meteo",
+          "wallpaper",
+          "update",
           "power_menu"
         ]
 widgets:
+  apps:
+    type: "yasb.applications.ApplicationsWidget"
+    options:
+      label: "{data}"
+      app_list:
+        - {icon: "Brave", launch: "cmd /c start brave"}
+        - {icon: "Steam", launch: "C:\\Users\\Administrator\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Steam\\Steam.lnk"}
+        - {icon: "Discord", launch: "C:\\Users\\Administrator\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"}
+        - {icon: "VSCode", launch: "code"}
+  quick_launch:
+    type: "yasb.quick_launch.QuickLaunchWidget"
+    options:
+      label: "<span>\uf002</span>"
+      search_placeholder: "Search applications..."
+      max_results: 7
+      show_icons: true
+      icon_size: 16
+      compact_text: true
+      providers:
+        apps:
+          enabled: true
+          prefix: "*"
+          priority: 0
+          show_recent: true
+          max_recent: 5
+          show_description: true
+      popup:
+        width: 720
+        height: 280
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        dark_mode: true
+      callbacks:
+        on_left: "toggle_quick_launch"
+      keybindings:
+        - keys: "alt+s"
+          action: "toggle_quick_launch"
+          screen: "primary"
   wallpaper:
     type: "yasb.wallpapers.WallpapersWidget"
     options:
       label: "<span>\uf03e</span>"
       image_path: "C:\\Users\\Administrator\\Pictures\\Best"
-      change_automatically: true # Automatically change wallpaper
-      update_interval: 43200
+      change_automatically: false # Automatically change wallpaper
+      update_interval: 60
       gallery:
         enabled: true
         blur: true
@@ -70,7 +106,7 @@ widgets:
         show_buttons: true
         orientation: "portrait"
         image_spacing: 10
-        lazy_load: true
+        lazy_load: false
         lazy_load_delay: 80
         lazy_load_fadein: 200
         image_corner_radius: 8
@@ -81,8 +117,8 @@ widgets:
       label: "<span>\udb80\udf5c</span>"
       menu_list:
         - { title: "Home", path: "~" }
-        - { title: "Downloads", path: "C:\\Users\\Administrator\\Downloads"}
-        - { title: "Pictures", path: "C:\\Users\\Administrator\\Pictures"}
+        - { title: "Downloads", path: "~\\Downloads"}
+        - { title: "Pictures", path: "~\\Pictures"}
         - { title: "C:", path: "C:\\"}
         - { title: "D:", path: "D:\\"}
         - { title: "E:", path: "E:\\"}
@@ -91,13 +127,75 @@ widgets:
       blur: true
       round_corners: true
       round_corners_type: "normal"
-      border_color: ""
+      border_color: "system"
       distance: 10
       container_padding:
         top: 0
         left: 0
         bottom: 0
         right: 0
+  open_meteo:
+    type: "yasb.open_meteo.OpenMeteoWidget"
+    options:
+      label: "<span>\ue30d</span>{temp}"
+      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
+      tooltip: true
+      update_interval: 600
+      hide_decimal: true
+      units: "metric"
+      callbacks:
+        on_left: "toggle_card"
+      icons:
+        sunnyDay: "\ue30d"
+        clearNight: "\ue314"
+      weather_card:
+        blur: true
+        alignment: "right"
+        direction: "down"
+        icon_size: 32
+        show_hourly_forecast: true
+        time_format: "24h"
+        hourly_point_spacing: 76
+        hourly_icon_size: 16
+        icon_smoothing: true
+        temp_line_width: 2
+        current_line_color: "system"
+        current_line_width: 1
+        current_line_style: "dot"
+        hourly_forecast_buttons:
+          enabled: false
+        weather_animation:
+          enabled: true
+          snow_overrides_rain: true
+          temp_line_animation_style: both
+          rain_effect_intensity: 1.0
+          snow_effect_intensity: 1.0
+          scale_with_chance: true
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "▼"
+      label_expanded: "▲"
+      label_position: "right"
+      icon_size: 16
+      pin_click_modifier: "alt"
+      show_unpinned: false
+      show_battery: false
+      show_volume: false
+      show_network: false
+      use_hook: true
+      show_in_popup: true
+      icons_per_row: 5
+      popup:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
   clock:
     type: "yasb.clock.ClockWidget"
     options:
@@ -106,66 +204,6 @@ widgets:
       timezones: [] #Looking up time zone info from registry
       calendar:
         alignment: "center"
-  battery:
-    type: "yasb.battery.BatteryWidget"
-    options:
-      label: "<span>{icon}</span> {percent}%"
-      label_alt: "<span>{icon}</span> {percent}% | time: {time_remaining}"
-      charging_options:
-        icon_format: "{charging_icon}"
-  weather:
-    type: "yasb.weather.WeatherWidget"
-    options:
-      label: "<span>{icon}</span> {temp}"
-      label_alt: "{location}: {conditions}, Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: '24b6c2cda6d84066b0304531241908'
-      update_interval: 600 #Update interval in seconds, Min 600
-      hide_decimal: true
-      location: "Semarang"
-      units: "metric"
-      callbacks:
-        on_left: "toggle_card"
-      icons:
-        sunnyDay: "\udb81\udd99"
-        clearNight: "\ue3c2"
-        cloudyDay: "\ue21d"
-        cloudyNight: "\ue226"
-        rainyDay: "\ue371"
-        rainyNight: "\ue371"
-        snowyIcyDay: "\udb81\udf17"
-        snowyIcyNight: "\udb81\udf17"
-        blizzardDay: "\udb81\udd99"
-        default: "\udb81\udd99"
-      weather_card:
-        blur: True
-        round_corners: True
-        round_corners_type: "normal"
-        border_color: ""
-        alignment: "left"
-        direction: "down"
-        distance: 6
-        icon_size: 48
-  volume:
-    type: "yasb.volume.VolumeWidget"
-    options:
-      label: "<span>{icon}</span>"
-      label_alt: "{volume}"
-      volume_icons:
-        - "\ueee8" 
-        - "\uf026"
-        - "\uf027" 
-        - "\uf027"  
-        - "\uf028"
-      audio_menu:
-        blur: True
-        round_corners: True
-        round_corners_type: 'normal'
-        border_color: ''
-        alignment: 'right'
-        direction: 'down'
-        distance: 6
-      callbacks:
-        on_right: "toggle_mute"
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
@@ -181,73 +219,72 @@ widgets:
         restart: ["\uead2","Restart"]
         sleep: ["\udb82\udd04","Sleep"]
         cancel: ["\udb81\udf3a","Cancel"]
-  active_window:
-    type: "yasb.active_window.ActiveWindowWidget"
-    options:
-      label: "{win[title]}"
-      label_alt: ""
-      label_no_window: ""
-      label_icon: true
-      label_icon_size: 12
-      max_length: 20
-      max_length_ellipsis: "..."
-      monitor_exclusive: true
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:
-      label: "<span>\uf4bc</span> {info[percent][total]}%"
-      label_alt: "<span>\uf437</span> {info[histograms][cpu_percent]}"
+      label: "{info[percent][total]:.0f}%"
+      label_alt: "{info[percent][total]:.0f}%"
+      progress_bar:
+        enabled: true
+        position: "left"
+        size: 16
+        thickness: 2
+        color: "#ffffff"
+        background_color: "#242739" 
+      menu:
+        enabled: true
+        show_graph: true
+        show_graph_grid: true
+        graph_history_size: 60
       update_interval: 2000
-      histogram_icons:
-        - '\u2581' # 0%
-        - '\u2581' # 10%
-        - '\u2582' # 20%
-        - '\u2583' # 30%
-        - '\u2584' # 40%
-        - '\u2585' # 50%
-        - '\u2586' # 60%
-        - '\u2587' # 70%
-        - '\u2588' # 80%+
-      histogram_num_columns: 8
       callbacks:
-        on_right: "exec cmd /c Taskmgr"
-      container_padding:
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
+        on_left: toggle_menu
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\uefc5</span> {virtual_mem_used}"
-      label_alt: "<span>\uefc5</span> {virtual_mem_used}/{virtual_mem_total}"
+      label: "{virtual_mem_used}"
+      label_alt: "{virtual_mem_used}"
       update_interval: 5000
+      progress_bar:
+        enabled: true
+        size: 16
+        thickness: 2
+        color: "#ffffff"
+        background_color: "#242739" 
       callbacks:
-        on_left: "toggle_label"
+        on_left: "toggle_menu"
+      memory_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      menu:
+        enabled: true
+        show_graph: true
+        show_graph_grid: true
+        graph_history_size: 60
+  update:
+    type: "yasb.update_check.UpdateCheckWidget"
+    options:
+      winget_update:
+        enabled: true
+        label: "<span>\uf0ab</span>{count}"
+        interval: 180
+        exclude: []
+      windows_update:
+        enabled: false
+        label: "<span>\uf0ab</span>{count}"
+        interval: 240
+        exclude: []
+  grouped_widgets:
+    type: "yasb.grouper.GrouperWidget"
+    options:
+      class_name: "grouped-widgets"
+      widgets: [
+        "memory",
+        "cpu",
+      ]
       container_padding:
         top: 0
-        left: 0
+        left: 2
         bottom: 0
-        right: 0
-  wifi:
-      type: "yasb.wifi.WifiWidget"
-      options:
-        label: "<span>{wifi_icon}</span>"
-        label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
-        update_interval: 5000
-        callbacks:
-          on_right: "exec cmd.exe /c start ms-settings:network"
-          on_left: "toggle_label"
-        container_padding:
-          top: 0
-          left: 0
-          bottom: 0
-          right: 0
-        wifi_icons: [
-          "\udb82\udd2e",  # Icon for 0% strength
-          "\udb82\udd1f",  # Icon for 1-20% strength
-          "\udb82\udd22",  # Icon for 21-40% strength
-          "\udb82\udd25",  # Icon for 41-80% strength
-          "\udb82\udd28"   # Icon for 81-100% strength
-        ]
-  
+        right: 4

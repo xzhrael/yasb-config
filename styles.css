@@ -24,9 +24,7 @@
     --accent-yellow: rgba(255, 200, 100, 0.8);
 }
 
-/* -------------------------------------------------------------------------------------------------- */
-/* 1. Layout and Containers                                                                           */
-/* -------------------------------------------------------------------------------------------------- */
+/***-------------------------------      • Layout & Container •      --------------------------------***/
 
 * {
 	font-size: 12px;
@@ -54,37 +52,6 @@
 .widget .label.alt {
 	padding: 1px 8px 1px 8px;
 }
-
-/***---------------------------------      • Audio Widget •      ----------------------------------***/
-
-.audio-menu {
-	background-color: var(--base);
-}
-.audio-container .device {
-	background-color: var(--base);
-	border: none;
-	padding: 6px 8px 6px 4px;
-	margin: 2px 0;
-	font-size: 12px;
-	border-radius: 4px;
-}
-.audio-container .device.selected {
-	background-color: var(--crust);
-}
-.audio-container .device:hover {
-	background-color: var(--base);
-}
-
-.volume-slider::groove {
-	color: var(--base);
-}
-.volume-slider::handle {
-	background-color: transparent;
-}
-.audio-menu {
-	background-color: var(--base);
-}
-
 
 /***-------------------------------      • Power Menu Widget •      --------------------------------***/
 
@@ -130,10 +97,7 @@
 	color: var(--accent-red);
 }
 
-
-/* --------------------------------------------------------------------------------------------------- */
-/* 6. Icons & Typography                                                                               */
-/* --------------------------------------------------------------------------------------------------- */
+/***-------------------------------      • Icon & Text •      --------------------------------***/
 
 .icon {
 	font-size: 16px;
@@ -157,45 +121,7 @@
     color: var(--text);
 }
 
-/***---------------------------------      • Weather Icons •      ----------------------------------***/
-
-.weather-widget .icon {
-    color: var(--text);
-}
-
-/***----------------------------------      • Weather Card •      -----------------------------------***/
-
-.weather-card {
-	background-color: var(--base);
-}
-.weather-card-today {
-	border-radius: 8px;
-	background-color: var(--base);
-	color: var(--text);
-}
-.weather-card-today .label {
-	font-size: 12px;
-}
-.weather-card-today .label.location {
-	font-size: 24px;
-	font-weight: 800;
-}
-.weather-card-today .label.alert {
-	font-size: 12px;
-	font-weight: 700;
-	background-color: rgba(247, 199, 42, 0.05);
-	border: 1px solid rgba(247, 209, 42, 0.1);
-	color: rgba(196, 181, 162, 0.85);
-	border-radius: 6px;
-	padding: 5px 0;
-}
-.weather-card-day {
-	border-radius: 8px;
-	background-color: var(--base);
-}
-.weather-card-day .label {
-	font-size: 12px;
-}
+/***-------------------------------      • Calendar •      --------------------------------***/
 
 .calendar {
 	background-color: var(--base);
@@ -238,6 +164,8 @@
 	margin-top: -20px;
 }
 
+/***-------------------------------      • Home Menu •      --------------------------------***/
+
 .home-menu {
 	background-color: var(--base);
 	border-radius: 8px;
@@ -261,30 +189,11 @@
 	margin: 0 8px;
 }
 
+/***-------------------------------      • Wallpaper •      --------------------------------***/
+
 .wallpapers-gallery-window {
 	background-color: var(--mantle);
 	margin: 0;
-}
-
-.volume-slider {
-	border: none;
-}
-.audio-menu {
-	background-color: var(--base);
-}
-.audio-container .device {
-	background-color: transparent;
-	border: none;
-	padding: 6px 8px 6px 4px;
-	margin: 2px 0;
-	font-size: 12px;
-	border-radius: 4px;
-}
-.audio-container .device.selected {
-	background-color: rgba(255, 255, 255, 0.085);
-}
-.audio-container .device:hover {
-	background-color: rgba(255, 255, 255, 0.06);
 }
 
 .wallpapers-gallery-buttons {
@@ -306,14 +215,15 @@
 	color: var(--text);
 }
 
+/***-------------------------------      • CPU & RAM •      --------------------------------***/
 
-/* CPU MEMORY Setting */
 .cpu-widget {
     padding-right: 0;
 }
 .memory-widget {
     padding-left: 0;
 }
+
 .cpu-widget .widget-container {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -322,30 +232,669 @@
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
-.memory-widget .label {
-    min-width: 34px;
-    max-width: 34px;
-}
+
+.memory-widget .label,
 .cpu-widget .label {
     min-width: 34px;
     max-width: 34px;
 }
-.cpu-widget .icon {
-    color: var(--text);
-    margin-right: 4px;
-}
+
+.cpu-widget .icon,
 .memory-widget .icon {
     color: var(--text);
-    margin-right: 4px;
-}
-
-
-/* WIFI Setting */
-.wifi-widget .icon{
-    color: var(--text) !important;
 }
 
 .widget {
-   border-radius: 8px;
+    border-radius: 8px;
     margin: 8px 4px;
+}
+
+/* Container */
+.cpu-popup,
+.memory-popup {
+    background-color: var(--light-menu-bg);
+    width: 400px;
+}
+.cpu-popup,
+.memory-popup {
+    background-color: var(--base);
+}
+
+/* Header */
+.cpu-popup .header,
+.memory-popup .header {
+    background: transparent;
+    padding: 12px 16px;
+}
+
+.cpu-popup .header .text,
+.memory-popup .header .text {
+    font-size: 16px;
+    font-family: "JetBrainsMono NFP";
+}
+
+/* Pin button */
+.cpu-popup .header .pin-btn,
+.memory-popup .header .pin-btn {
+    font-size: 14px;
+    background: transparent;
+    font-family: "Segoe Fluent Icons";
+    border: none;
+    padding: 6px;
+    color: var(--dark-dim-color);
+}
+
+.cpu-popup .header .pin-btn,
+.memory-popup .header .pin-btn {
+    color: var(--light-dim-color);
+}
+
+.cpu-popup .header .pin-btn:hover,
+.memory-popup .header .pin-btn:hover {
+    color: var(--dark-dim-color);
+}
+
+.cpu-popup .header .pin-btn:hover,
+.memory-popup .header .pin-btn:hover {
+    color: var(--light-dim-color);
+}
+
+.cpu-popup .header .pin-btn.pinned,
+.memory-popup .header .pin-btn.pinned {
+    color: var(--dark-color);
+}
+
+.cpu-popup .header .pin-btn.pinned,
+.memory-popup .header .pin-btn.pinned {
+    color: var(--light-color);
+}
+
+/* Graph */
+.cpu-popup .graph-container,
+.memory-popup .graph-container {
+    background: transparent;
+    min-height: 64px;
+}
+
+.cpu-popup .cpu-graph,
+.memory-popup .memory-graph {
+    color: #0f6bff;
+}
+
+.cpu-popup .cpu-graph-grid,
+.memory-popup .memory-graph-grid {
+    color: rgba(0, 0, 0, 0.05);
+}
+
+.cpu-popup .cpu-graph-grid,
+.memory-popup .memory-graph-grid {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+.cpu-popup .graph-title,
+.memory-popup .graph-title {
+    font-size: 12px;
+    color: var(--dark-dim-color);
+    font-family: "JetBrainsMono NFP";
+    padding: 0 0 4px 14px;
+}
+
+.cpu-popup .graph-title,
+.memory-popup .graph-title {
+    color: var(--light-dim-color);
+}
+
+/* Stats */
+.cpu-popup .stats,
+.memory-popup .stats {
+    background: transparent;
+    padding: 16px;
+}
+
+/* SINGLE SOURCE OF TRUTH (no duplicate anymore) */
+.cpu-popup .stats .stat-item,
+.memory-popup .stats .stat-item {
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 8px;
+}
+
+.cpu-popup .stats .stat-item,
+.memory-popup .stats .stat-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.cpu-popup .stats .stat-label,
+.memory-popup .stats .stat-label {
+    font-size: 13px;
+    color: var(--dark-dim-color);
+    font-family: "JetBrainsMono NFP";
+    padding: 6px 4px 2px;
+}
+
+.cpu-popup .stats .stat-label,
+.memory-popup .stats .stat-label {
+    color: var(--light-dim-color);
+}
+
+.cpu-popup .stats .stat-value,
+.memory-popup .stats .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-color);
+    font-family: "JetBrainsMono NFP";
+    padding: 0 4px 12px;
+}
+
+.cpu-popup .stats .stat-value,
+.memory-popup .stats .stat-value {
+    color: var(--light-color);
+}
+
+/***-------------------------------      • Update •      --------------------------------***/
+
+.update-check-widget {
+    padding: 0 5px 0 0px;
+}
+.update-check-widget .icon {
+    font-size: 16px;
+}
+
+/***-------------------------------      • Systray •      --------------------------------***/
+
+.systray .button {
+    border-radius: 4px;
+    padding: 2px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.systray .button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.systray .button.drag-over {
+    background: rgba(255, 255, 255, 0.4);
+}
+.systray .pinned-container.drop-target {
+    background: rgba(255, 255, 255, 0.1);
+}
+.systray .unpinned-visibility-btn {
+    border-radius: 4px;
+    height: 20px;
+    width: 16px;
+    border: none;
+    outline: none;
+}
+
+.systray .unpinned-visibility-btn:checked {
+    background: transparent;
+}
+.systray-popup .button.drag-over {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.systray .pinned-container.pinned-container.drop-target {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.systray-popup {
+    background-color: var(--light-menu-bg);
+    padding: 4px;
+}
+.systray-popup {
+    background-color: var(--base);
+}
+.systray-popup .button {
+    padding: 10px;
+    margin: 0;
+    border: 0;
+    border-radius: 6px;
+}
+.systray-popup .button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.systray-popup .button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/***-------------------------------      • Grouped •      --------------------------------***/
+
+.grouped-widgets .container {
+    background-color: var(--base);
+    margin: 4px 0 4px 0;
+    border-radius: 12px;
+    border: 1px solid var(--surface1);
+}
+
+/***-------------------------------      • Progress Circle •      --------------------------------***/
+
+.progress-circle {
+    padding-right: 2px;
+}
+
+/***-------------------------------      • Tooltip •      --------------------------------***/
+
+.tooltip {
+    background-color: var(--base);
+    border: 1px solid var(--surface0);
+    border-radius: 4px;
+    color: var(--text);
+    padding: 4px 8px 5px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+/***-------------------------------      • Apps •      --------------------------------***/
+
+.apps-widget .label {
+    font-size: 12px;
+    font-weight: 700;
+}
+.apps-widget .label:hover {
+    color: #ffffff;
+    background-color: rgba(191, 202, 219, 0.07);
+}
+
+/***-------------------------------    • Quick Launch (Search) •    --------------------------------***/
+
+.quick-launch-popup .container {
+    background-color: var(--light-menu-bg);
+}
+.quick-launch-popup .container {
+    background-color: var(--base);
+}
+/* Search bar container */
+.quick-launch-popup .search {
+    padding: 12px 16px;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.quick-launch-popup .search {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+/* Search loader line color */
+.quick-launch-popup .search .loader-line {
+    color: #449bff;
+}
+.quick-launch-popup .search .search-icon {
+    font-family: "Segoe Fluent Icons";
+    font-size: 18px;
+    color: var(--dark-color);
+    padding-right: 8px;
+    min-width: 18px;
+}
+.quick-launch-popup .search .search-icon {
+    color: var(--light-color);
+}
+.quick-launch-popup .search .search-submit-icon {
+    font-family: "Segoe Fluent Icons";
+    font-size: 18px;
+    color: var(--dark-color);
+    min-width: 18px;
+}
+.quick-launch-popup .search .search-submit-icon {
+    color: var(--light-color);
+}
+.quick-launch-popup .search .search-input {
+    background: transparent;
+    border: none;
+    color: var(--dark-color);
+    font-size: 16px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 400;
+    padding: 4px 0;
+}
+.quick-launch-popup .search .search-input {
+    color: var(--light-color);
+}
+/* Search prefix styling (e.g., ">" for commands) */
+.quick-launch-popup .search .prefix {
+    background: #2167d8;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: -2px 8px 0px 8px;
+    margin-top: 2px;
+    margin-right: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "JetBrainsMono NFP";
+    max-height: 28px;
+}
+
+/* Results list */
+.quick-launch-popup .results {
+    background: transparent;
+    padding: 8px;
+}
+/* Individual result item here you can set font szie for title */
+.quick-launch-popup .results-list-view {
+    font-size: 14px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    color: var(--dark-color)
+}
+.quick-launch-popup .results-list-view {
+    color: var(--light-color);
+}
+.quick-launch-popup .results-list-view .description {
+    color: var(--dark-dim-color);
+    font-size: 12px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+}
+.quick-launch-popup .results-list-view .description {
+    color: var(--light-dim-color);
+}
+.quick-launch-popup .results-list-view .separator {
+    color: var(--dark-dim-color);
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    padding: 4px 0 4px 12px;
+}
+/* Result item hover and selected states */
+.quick-launch-popup .results-list-view::item {
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+.quick-launch-popup .results-list-view::item:hover,
+.quick-launch-popup .results-list-view::item:selected {
+    background-color: rgba(128, 130, 158, 0.1);
+}
+/* Empty state when no results found */
+.quick-launch-popup .results-empty-text {
+    font-size: 24px;
+    font-family: "JetBrainsMono NFP";
+    color: rgb(255, 255, 255);
+    padding-top: 8px;
+}
+
+/* Preview Pane */
+.quick-launch-popup .preview {
+    background: rgba(0, 0, 0, 0);
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+.quick-launch-popup .preview .preview-text {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 8px 12px;
+    font-family: "JetBrainsMono NFP";
+    background-color: rgba(255, 255, 255, 0.03);
+    border: none;
+}
+.quick-launch-popup .preview .preview-image {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px;
+}
+.quick-launch-popup .preview .preview-meta {
+    padding: 6px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: "JetBrainsMono NFP";
+}
+.quick-launch-popup .preview .preview-meta .preview-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    font-family: "JetBrainsMono NFP";
+    margin-bottom: 10px;
+    margin-left: -2px;
+}
+
+.quick-launch-popup .preview .preview-meta .preview-subtitle {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "JetBrainsMono NFP";
+    padding-bottom: 1px;
+}
+
+/* Preview inline edit form (.preview.edit) */
+.quick-launch-popup .preview.edit .preview-title {
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    color: #ffffff;
+    padding: 8px 12px 4px 12px;
+}
+.quick-launch-popup .preview.edit .preview-line-edit {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+    padding: 6px 8px;
+    margin: 0 12px;
+}
+.quick-launch-popup .preview.edit .preview-line-edit:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.quick-launch-popup .preview.edit .preview-text-edit {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+    padding: 6px 8px;
+    margin: 0 12px;
+}
+.quick-launch-popup .preview.edit .preview-text-edit:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.quick-launch-popup .preview.edit .preview-actions {
+    padding: 8px 12px;
+}
+.quick-launch-popup .preview.edit .preview-btn {
+    background: rgb(45, 46, 48);
+    border: none;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    padding: 4px 16px;
+}
+.quick-launch-popup .preview.edit .preview-btn:hover {
+    background: rgb(59, 60, 63);
+}
+.quick-launch-popup .preview.edit .preview-btn.save {
+    background: rgb(12, 81, 190);
+    color: #ffffff;
+}
+.quick-launch-popup .preview.edit .preview-btn.save:hover {
+    background: rgb(19, 90, 204);
+}
+
+/***-------------------------------    • Meteo (Weather) •    --------------------------------***/
+
+.open-meteo-widget .icon {
+    color: #F6E3B4
+}
+.open-meteo-card {
+    background-color: var(--light-menu-bg);
+    min-width: 500px;
+}
+.open-meteo-card {
+    background-color: var(--base);
+    min-width: 500px;
+}
+.open-meteo-card-today .label {
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 400;
+    color: var(--dark-dim-color)
+}
+.open-meteo-card-today .label {
+    color: var(--light-dim-color);
+}
+.open-meteo-card-today .label.location {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: "JetBrainsMono NFP";
+    color: var(--dark-color)
+}
+.open-meteo-card-today .label.location {
+    color: var(--light-color);
+}
+.open-meteo-card-today .label.sunrisesunset {
+    font-size: 18px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    color: rgb(201, 204, 159);
+}
+.open-meteo-card-today .label.sunrisesunset-icon {
+    font-size: 16px;
+    color: rgb(201, 204, 159);
+    font-family: "Segoe Fluent Icons";
+    font-weight: 600;
+}
+.open-meteo-card-day {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 4px;
+    min-width: 70px;
+}
+.open-meteo-card-day .day-name {
+    font-family: "JetBrainsMono NFP";
+    color: var(--dark-dim-color);
+    font-size: 12px;
+    font-weight: 600;
+}
+.open-meteo-card-day .day-name {
+    color: var(--light-dim-color);
+}
+.open-meteo-card-day .day-temp-max {
+    font-family: "JetBrainsMono NFP";
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--dark-color);
+}
+.open-meteo-card-day .day-temp-max {
+    color: var(--light-color);
+}
+
+.open-meteo-card-day .day-temp-min {
+    font-family: "JetBrainsMono NFP";
+    color: var(--dark-color);
+    font-weight: 400;
+    font-size: 13px;
+}
+.open-meteo-card-day .day-temp-min {
+    color: var(--light-color);
+}
+
+.open-meteo-card-day.active {
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.open-meteo-card-day.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.open-meteo-card-day:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.open-meteo-card-day:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.open-meteo-card .hourly-container {
+    border: none;
+    background-color: transparent;
+    min-height: 120px;
+}
+.open-meteo-card .hourly-data {
+    font-size: 11px;
+    font-weight: 700;
+    font-family: "JetBrainsMono NFP";
+}
+.open-meteo-card .hourly-data.temperature {
+    background-color: #c9be48;
+}
+.open-meteo-card .hourly-data.rain {
+    background-color: #4a90e2;
+}
+.open-meteo-card .hourly-data.snow {
+    background-color: #a0c4ff;
+}
+.open-meteo-card .hourly-data .hourly-rain-animation {
+    color: rgba(150, 200, 255, 40);
+    background-color: rgba(0, 0, 0, 0);
+}
+.open-meteo-card .hourly-data .hourly-snow-animation {
+    color: rgba(255, 255, 255, 150);
+    background-color: rgba(0, 0, 0, 0);
+}
+.open-meteo-card .hourly-data-buttons {
+    margin-top: 11px;
+    margin-left: 11px;
+}
+.open-meteo-card .hourly-data-button {
+    border-radius: 4px;
+    min-height: 24px;
+    min-width: 24px;
+    max-width: 24px;
+    max-height: 24px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.3);
+    border: 1px solid transparent;
+}
+.open-meteo-card .hourly-data-button.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.open-meteo-card .search-head {
+    font-size: 18px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+.open-meteo-card .search-description {
+    font-size: 14px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    padding-bottom: 8px;
+}
+.open-meteo-card .no-data-icon {
+    font-size: 88px;
+}
+.open-meteo-card .no-data-text {
+    font-size: 16px;
+    font-family: "JetBrainsMono NFP";
+    font-weight: 400;
+}
+/* search dialog */
+.open-meteo-card .search-input {
+    padding: 8px 12px;
+    border: 1px solid #5e6070;
+    border-radius: 6px;
+    background-color: rgba(17, 17, 27, 0.1);
+    color: #cdd6f4;
+    font-family: "JetBrainsMono NFP";
+    font-size: 14px;
+}
+.open-meteo-card .search-input:focus {
+    border: 1px solid #89b4fa;
+    background-color: rgba(17, 17, 27, 0.2);
+}
+.open-meteo-card .search-results {
+    border: 1px solid #45475a00;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #cbced8;
+    font-size: 13px;
+    font-family: "JetBrainsMono NFP";
+}
+.open-meteo-card .search-results::item {
+    padding: 6px;
+}
+.open-meteo-card .search-results::item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }

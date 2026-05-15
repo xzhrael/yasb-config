@@ -56,17 +56,18 @@ widgets:
     options:
       label: "{data}"
       app_list:
-        - {icon: "Brave", launch: "cmd /c start brave"}
-        - {icon: "Steam", launch: "C:\\Users\\Administrator\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Steam\\Steam.lnk"}
-        - {icon: "Discord", launch: "C:\\Users\\Administrator\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"}
-        - {icon: "VSCode", launch: "code"}
+        - {icon: "Helium", launch: "C:\\Users\\Luca\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Helium.lnk"}
+        - {icon: "Steam", launch: "C:\\Users\\Luca\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Steam\\Steam.lnk"}
+        - {icon: "Discord", launch: "c:\\Users\\Luca\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Discord Inc\\Discord.lnk"}
+        - {icon: "Agent", launch: "C:\\Users\\Luca\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Antigravity\\Antigravity.lnk"}
+        - {icon: "Terminal", launch: "wt"}
   quick_launch:
     type: "yasb.quick_launch.QuickLaunchWidget"
     options:
       label: "<span>\uf002</span>"
       search_placeholder: "Search applications..."
       max_results: 7
-      show_icons: true
+      show_icons: false
       icon_size: 16
       compact_text: true
       providers:
@@ -79,8 +80,8 @@ widgets:
           show_description: true
       popup:
         width: 720
-        height: 280
-        blur: true
+        height: 360
+        blur: false
         round_corners: true
         round_corners_type: "normal"
         border_color: "system"
@@ -95,7 +96,7 @@ widgets:
     type: "yasb.wallpapers.WallpapersWidget"
     options:
       label: "<span>\uf03e</span>"
-      image_path: "C:\\Users\\Administrator\\Pictures\\Best"
+      image_path: "C:\\Users\\Luca\\Pictures\\Best"
       change_automatically: false # Automatically change wallpaper
       update_interval: 60
       gallery:

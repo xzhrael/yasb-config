@@ -4,24 +4,31 @@
 /* -------------------------------------------------------------------------------------------------- */
 
 :root {
-    --text: rgba(255, 255, 255, 0.85);
-    --subtext1: rgba(255, 255, 255, 0.75);
-    --subtext0: rgba(255, 255, 255, 0.65);
-    --overlay2: rgba(255, 255, 255, 0.55);
-    --overlay1: rgba(255, 255, 255, 0.45);
-    --overlay0: rgba(255, 255, 255, 0.35);
-    --surface2: rgba(255, 255, 255, 0.25);
-    --surface1: rgba(255, 255, 255, 0.15);
-    --surface0: rgba(255, 255, 255, 0.1);
-    --base: rgb(19, 19, 19);
-    --mantle: rgba(19, 19, 19, 0.25);
-    --crust: rgba(19, 19, 19, 0.2);
-    
-    /* Accent colors (more muted) */
-    --accent-red: rgba(255, 100, 100, 0.8);
-    --accent-blue: rgba(100, 150, 255, 0.8);
-    --accent-green: rgba(100, 220, 100, 0.8);
-    --accent-yellow: rgba(255, 200, 100, 0.8);
+    /* Base */
+    --base: #1d2021;
+    --mantle: rgba(40, 40, 40, 0.85);
+    --crust: rgba(40, 40, 40, 0.7);
+
+    /* Text */
+    --text: #ebdbb2;
+    --subtext1: #d5c4a1;
+    --subtext0: #a89984;
+
+    /* Overlay */
+    --overlay2: #928374;
+    --overlay1: #7c6f64;
+    --overlay0: #665c54;
+
+    /* Surface */
+    --surface2: #504945;
+    --surface1: #3c3836;
+    --surface0: #32302f;
+
+    /* Accent */
+    --accent-red: #fb4934;
+    --accent-green: #b8bb26;
+    --accent-yellow: #fabd2f;
+    --accent-blue: #83a598;
 }
 
 /***-------------------------------      • Layout & Container •      --------------------------------***/
@@ -318,7 +325,7 @@
 
 .cpu-popup .cpu-graph,
 .memory-popup .memory-graph {
-    color: #0f6bff;
+    color: var(--accent-blue);
 }
 
 .cpu-popup .cpu-graph-grid,
@@ -328,7 +335,7 @@
 
 .cpu-popup .cpu-graph-grid,
 .memory-popup .memory-graph-grid {
-    color: rgba(255, 255, 255, 0.05);
+    color: rgba(235, 219, 178, 0.05);
 }
 
 .cpu-popup .graph-title,
@@ -414,13 +421,13 @@
 }
 
 .systray .button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--surface1);
 }
 .systray .button.drag-over {
     background: rgba(255, 255, 255, 0.4);
 }
 .systray .pinned-container.drop-target {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(235, 219, 178, 0.1);
 }
 .systray .unpinned-visibility-btn {
     border-radius: 4px;
@@ -437,7 +444,7 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 .systray .pinned-container.pinned-container.drop-target {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(235, 219, 178, 0.1);
 }
 .systray-popup {
     background-color: var(--light-menu-bg);
@@ -453,10 +460,10 @@
     border-radius: 6px;
 }
 .systray-popup .button:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(235, 219, 178, 0.2);
 }
 .systray-popup .button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(235, 219, 178, 0.05);
 }
 
 /***-------------------------------      • Grouped •      --------------------------------***/
@@ -501,217 +508,184 @@
 /***-------------------------------    • Quick Launch (Search) •    --------------------------------***/
 
 .quick-launch-popup .container {
-    background-color: var(--light-menu-bg);
-}
-.quick-launch-popup .container {
     background-color: var(--base);
 }
-/* Search bar container */
+
+/* Search bar */
 .quick-launch-popup .search {
     padding: 12px 16px;
     background-color: transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--surface1);
 }
-.quick-launch-popup .search {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-/* Search loader line color */
+
+/* Loader */
 .quick-launch-popup .search .loader-line {
-    color: #449bff;
+    color: var(--accent-blue);
 }
-.quick-launch-popup .search .search-icon {
-    font-family: "Segoe Fluent Icons";
-    font-size: 18px;
-    color: var(--dark-color);
-    padding-right: 8px;
-    min-width: 18px;
-}
-.quick-launch-popup .search .search-icon {
-    color: var(--light-color);
-}
+
+/* Icons */
+.quick-launch-popup .search .search-icon,
 .quick-launch-popup .search .search-submit-icon {
     font-family: "Segoe Fluent Icons";
     font-size: 18px;
-    color: var(--dark-color);
+    color: var(--text);
     min-width: 18px;
 }
-.quick-launch-popup .search .search-submit-icon {
-    color: var(--light-color);
-}
+
+/* Input */
 .quick-launch-popup .search .search-input {
     background: transparent;
     border: none;
-    color: var(--dark-color);
+    color: var(--text);
     font-size: 16px;
     font-family: "JetBrainsMono NFP";
     font-weight: 400;
-    padding: 4px 0;
+    padding: 5px;
 }
-.quick-launch-popup .search .search-input {
-    color: var(--light-color);
-}
-/* Search prefix styling (e.g., ">" for commands) */
+
+/* Prefix */
 .quick-launch-popup .search .prefix {
-    background: #2167d8;
+    background: var(--surface2);
     border-radius: 6px;
-    color: #ffffff;
-    padding: -2px 8px 0px 8px;
+    color: var(--text);
+    padding: 2px 8px;
     margin-top: 2px;
     margin-right: 4px;
     font-size: 13px;
     font-weight: 600;
-    font-family: "JetBrainsMono NFP";
     max-height: 28px;
 }
 
-/* Results list */
+/* Results */
 .quick-launch-popup .results {
     background: transparent;
     padding: 8px;
 }
-/* Individual result item here you can set font szie for title */
+
 .quick-launch-popup .results-list-view {
     font-size: 14px;
     font-family: "JetBrainsMono NFP";
-    font-weight: 600;
-    color: var(--dark-color)
+    font-weight: 700;
+    color: var(--text);
 }
-.quick-launch-popup .results-list-view {
-    color: var(--light-color);
-}
+
 .quick-launch-popup .results-list-view .description {
-    color: var(--dark-dim-color);
+    color: var(--subtext0);
     font-size: 12px;
-    font-family: "JetBrainsMono NFP";
-    font-weight: 600;
 }
-.quick-launch-popup .results-list-view .description {
-    color: var(--light-dim-color);
-}
+
 .quick-launch-popup .results-list-view .separator {
-    color: var(--dark-dim-color);
+    color: var(--overlay1);
     font-size: 13px;
-    font-family: "JetBrainsMono NFP";
-    font-weight: 600;
     padding: 4px 0 4px 12px;
 }
-/* Result item hover and selected states */
+
+/* Hover & Selected */
 .quick-launch-popup .results-list-view::item {
     padding: 4px 12px;
     border-radius: 8px;
 }
+
 .quick-launch-popup .results-list-view::item:hover,
 .quick-launch-popup .results-list-view::item:selected {
-    background-color: rgba(128, 130, 158, 0.1);
+    background-color: var(--surface1);
 }
-/* Empty state when no results found */
+
+/* Empty */
 .quick-launch-popup .results-empty-text {
     font-size: 24px;
     font-family: "JetBrainsMono NFP";
-    color: rgb(255, 255, 255);
+    color: var(--subtext1);
     padding-top: 8px;
 }
 
-/* Preview Pane */
+/* Preview */
 .quick-launch-popup .preview {
-    background: rgba(0, 0, 0, 0);
-    border-left: 1px solid rgba(255, 255, 255, 0.06);
+    background: transparent;
+    border-left: 1px solid var(--surface0);
 }
+
 .quick-launch-popup .preview .preview-text {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--subtext1);
     padding: 8px 12px;
-    font-family: "JetBrainsMono NFP";
-    background-color: rgba(255, 255, 255, 0.03);
-    border: none;
+    background-color: var(--surface0);
 }
+
 .quick-launch-popup .preview .preview-image {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: var(--surface0);
     padding: 8px 12px;
 }
+
 .quick-launch-popup .preview .preview-meta {
     padding: 6px 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    font-family: "JetBrainsMono NFP";
+    border-top: 1px solid var(--surface0);
 }
+
 .quick-launch-popup .preview .preview-meta .preview-title {
     font-size: 14px;
     font-weight: 600;
-    color: rgb(255, 255, 255);
-    font-family: "JetBrainsMono NFP";
+    color: var(--text);
     margin-bottom: 10px;
-    margin-left: -2px;
 }
 
 .quick-launch-popup .preview .preview-meta .preview-subtitle {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: "JetBrainsMono NFP";
-    padding-bottom: 1px;
+    color: var(--subtext0);
 }
 
-/* Preview inline edit form (.preview.edit) */
+/* Edit form */
 .quick-launch-popup .preview.edit .preview-title {
     font-size: 13px;
-    font-family: "JetBrainsMono NFP";
     font-weight: 600;
-    color: #ffffff;
-    padding: 8px 12px 4px 12px;
+    color: var(--text);
+    padding: 8px 12px 4px;
 }
-.quick-launch-popup .preview.edit .preview-line-edit {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
-    color: #ffffff;
-    font-size: 13px;
-    font-family: "JetBrainsMono NFP";
-    padding: 6px 8px;
-    margin: 0 12px;
-}
-.quick-launch-popup .preview.edit .preview-line-edit:focus {
-    border-color: rgba(255, 255, 255, 0.3);
-}
+
+.quick-launch-popup .preview.edit .preview-line-edit,
 .quick-launch-popup .preview.edit .preview-text-edit {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
     border-radius: 4px;
-    color: #ffffff;
+    color: var(--text);
     font-size: 13px;
-    font-family: "JetBrainsMono NFP";
     padding: 6px 8px;
     margin: 0 12px;
 }
+
+.quick-launch-popup .preview.edit .preview-line-edit:focus,
 .quick-launch-popup .preview.edit .preview-text-edit:focus {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--accent-yellow);
 }
-.quick-launch-popup .preview.edit .preview-actions {
-    padding: 8px 12px;
-}
+
+/* Buttons */
 .quick-launch-popup .preview.edit .preview-btn {
-    background: rgb(45, 46, 48);
+    background: var(--surface1);
     border: none;
     border-radius: 4px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--subtext1);
     font-size: 12px;
-    font-family: "JetBrainsMono NFP";
     font-weight: 600;
     padding: 4px 16px;
 }
+
 .quick-launch-popup .preview.edit .preview-btn:hover {
-    background: rgb(59, 60, 63);
+    background: var(--surface2);
 }
+
 .quick-launch-popup .preview.edit .preview-btn.save {
-    background: rgb(12, 81, 190);
-    color: #ffffff;
+    background: var(--accent-blue);
+    color: var(--base);
 }
+
 .quick-launch-popup .preview.edit .preview-btn.save:hover {
-    background: rgb(19, 90, 204);
+    background: var(--accent-aqua);
 }
 
 /***-------------------------------    • Meteo (Weather) •    --------------------------------***/
 
 .open-meteo-widget .icon {
-    color: #F6E3B4
+    color: var(--accent-yellow);
 }
 .open-meteo-card {
     background-color: var(--light-menu-bg);
@@ -752,7 +726,7 @@
     font-weight: 600;
 }
 .open-meteo-card-day {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(235, 219, 178, 0.1);
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0);
     padding: 4px;
@@ -789,18 +763,18 @@
 
 .open-meteo-card-day.active {
     background-color: rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(235, 219, 178, 0.2);
 }
 .open-meteo-card-day.active {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(235, 219, 178, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .open-meteo-card-day:hover {
     background-color: rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(235, 219, 178, 0.2);
 }
 .open-meteo-card-day:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(235, 219, 178, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .open-meteo-card .hourly-container {
@@ -841,13 +815,13 @@
     max-width: 24px;
     max-height: 24px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(235, 219, 178, 0.2);
     border: 1px solid transparent;
 }
 .open-meteo-card .hourly-data-button.active {
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(235, 219, 178, 0.1);
+    border: 1px solid rgba(235, 219, 178, 0.1);
 }
 .open-meteo-card .search-head {
     font-size: 18px;
@@ -896,5 +870,5 @@
     padding: 6px;
 }
 .open-meteo-card .search-results::item:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(235, 219, 178, 0.05);
 }
